@@ -30,7 +30,12 @@ function BookList() {
         title={secondBook.title}
         author={secondBook.author}
         img={secondBook.img}
-      />
+      >
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas fuga ab
+          consectetur natus autem eaque nesciunt quae odio commodi totam?
+        </p>
+      </Book>
       <Book
         title={firstBook.title}
         author={firstBook.author}
@@ -40,12 +45,18 @@ function BookList() {
   );
 }
 
+// Destructuring of Props in params, it will be in parameters where we recieve props like:
+// const Book = { img, title, author, children };
+
 const Book = (props) => {
+  // Destructuring of Props in component
+  const { img, title, author } = props;
   return (
     <article className="book">
-      <img src={props.img} alt="" />
-      <h1>{props.title}</h1>
-      <h4>{props.author}</h4>
+      <img src={img} alt="" />
+      <h1>{title}</h1>
+      {props.children}
+      <h4>{author}</h4>
     </article>
   );
 };
