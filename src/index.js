@@ -20,6 +20,8 @@ const books = [
   },
 ];
 
+// Through JS hoisting fnction goes on the top when JS compiles, Variables also goes on top but there values do not.
+
 function BookList() {
   return (
     <section className="booklist">
@@ -32,11 +34,36 @@ function BookList() {
 
 const Book = (props) => {
   const { img, title, author } = props;
+  // External Event
+  const clickHandler = () => {
+    console.log(author);
+  };
+  const complexExample = (name) => {
+    console.log(name);
+  };
   return (
     <article className="book">
       <img src={img} alt="" />
-      <h1>{title}</h1>
-      <h4>{author}</h4>
+      {/* Inline Event */}
+      <h1
+        onMouseOver={() => {
+          console.log(title);
+        }}
+      >
+        Show Title
+      </h1>
+      <button type="button" onClick={clickHandler}>
+        Book Name
+      </button>
+      {/* If you want to pass parameter you should use function as arrow function, not invoke the function */}
+      <button
+        type="button"
+        onClick={() => {
+          complexExample("Nomi");
+        }}
+      >
+        Show Title
+      </button>
     </article>
   );
 };
